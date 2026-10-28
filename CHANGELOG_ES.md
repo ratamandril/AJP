@@ -7,7 +7,8 @@
 - El preflight en vivo es de solo lectura, verifica el perfil `AJP-SANDBOX` y rechaza cualquier diferencia inesperada en el contrato de origen.
 - La aplicación crea una versión paralela del tipo y copia solo las notas sintéticas declaradas; no edita ni elimina la fuente.
 - Se añaden pruebas simuladas para cambios estructurales, precondiciones y barreras de escritura.
-- Las 53 pruebas automatizadas locales pasan. La prueba estructural en vivo sigue pendiente en la instalación Anki del usuario.
+- Las 53 pruebas automatizadas locales pasaron con `python -m pytest -q` (`53 passed in 1.95s`; 2026-10-28).
+- La prueba estructural en vivo pasó el 2026-10-28 en el perfil desechable `AJP-SANDBOX`: se creó o reutilizó el tipo paralelo `@1.2.0`, se verificaron el campo `Difficulty` y las plantillas `Forward`/`Reverse`, se generaron dos tarjetas destino, se preservó la nota y las tarjetas de origen y la segunda ejecución fue idempotente.
 
 ## v0.6.0 — Actualizaciones controladas de campos
 
