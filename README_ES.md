@@ -10,7 +10,7 @@
 
 Los inventarios que se compartieron durante el desarrollo (`anki_structure.json` y `anki_full_snapshot.json`) se consideran **fixtures de prueba, no contenido oficial del usuario**. No se deben usar como fuente de verdad para contenido de estudio.
 
-La prueba de integración básica y la prueba de migración por copia se ejecutaron en el perfil `AJP-SANDBOX` y devolvieron `passed`, según los informes generados localmente. El kit no puede conectarse al `localhost:8765` de otra computadora.
+La prueba de integración básica y la prueba de migración por copia se ejecutaron en el perfil `AJP-SANDBOX` y devolvieron `passed`, según los informes generados localmente. La prueba estructural en vivo de v0.7.0 también pasó el 2026-10-28: creó o reutilizó el tipo `@1.2.0`, verificó `Difficulty` y las plantillas, generó dos tarjetas destino, preservó el origen y confirmó la idempotencia de la segunda ejecución. Las 53 pruebas automatizadas locales también pasaron con `python -m pytest -q` (`53 passed in 1.95s`). El kit no puede conectarse al `localhost:8765` de otra computadora.
 
 ## Componentes
 
@@ -159,7 +159,7 @@ Estas pruebas usan datos y servidores simulados y no modifican tu Anki:
 python -m unittest discover -s tests -v
 ```
 
-Se debe distinguir la validación local de JSON de la prueba de integración real. Solo el informe producido por `run_live_smoke_test.py` o `run_live_migration_test.py` confirma la ejecución contra el AnkiConnect local.
+Se debe distinguir la validación local de JSON de la prueba de integración real. Los informes producidos por `run_live_smoke_test.py`, `run_live_migration_test.py` y `run_live_structural_change_test.py` confirman sus respectivas ejecuciones contra el AnkiConnect local.
 
 ## Límites de esta versión
 
@@ -213,4 +213,4 @@ Revisa `reports\structural_change_plan.json`. Si coincide exactamente con lo esp
 python scripts\run_live_structural_change_test.py --confirm-write AJP-SANDBOX --out reports\live_structural_change_test.json
 ```
 
-La prueba crea el tipo `@1.2.0` y copia la nota sintética a `AJP-SANDBOX::Structural Test`; verifica las plantillas, los campos, la preservación del original y la idempotencia. No ejecutes la escritura en otro perfil. **Esta prueba en vivo aún está pendiente de ejecución en la instalación local del usuario.**
+La prueba crea o reutiliza el tipo `@1.2.0` y copia la nota sintética a `AJP-SANDBOX::Structural Test`; verifica las plantillas, los campos, dos tarjetas destino, la preservación del original y la idempotencia. **Esta prueba en vivo pasó en la instalación local el 2026-10-28** (informe `live_structural_change_test.json`). No ejecutes la escritura en un perfil que contenga notas que quieras conservar.
