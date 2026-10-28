@@ -1,25 +1,17 @@
 # Anki JSON Protocol (AJP)
 
-AJP define en JSON los paquetes de contenido, los inventarios de colección y los planes de migración o actualización controlada para Anki. Los scripts locales validan esos contratos y realizan operaciones explícitas mediante AnkiConnect.
+AJP organiza en JSON los paquetes de contenido para Anki, los inventarios de colección y los planes de migración o actualización controlada.
 
-**Kit actual: v0.7.0** — incluye creación declarativa, inventarios, migración por copia, actualización controlada de campos y planificación de cambios estructurales mediante una nueva versión del tipo de nota.
+## Estado de publicación
 
-La documentación principal está en español: [README_ES.md](README_ES.md). Consulta también [las reglas de compatibilidad](docs_COMPATIBILIDAD_ES.md) y el [procedimiento de cambios estructurales](STRUCTURAL_CHANGES_v0.7.0_ES.md).
+El repositorio se ha inicializado, pero **la importación del árbol completo de fuentes todavía no está terminada**. No uses esta rama como una distribución completa mientras no estén publicados `scripts/`, `schemas/`, `examples/`, `tests/` y la documentación de la versión.
 
-## Estado de pruebas
+El paquete fuente AJP v0.7.0 preparado para esta publicación contiene el código base v0.6.0 y la extensión de cambios estructurales v0.7.0. En la verificación local, las 53 pruebas automatizadas pasaron.
 
-- Las 53 pruebas automatizadas locales pasaron al empaquetar esta versión.
-- Las pruebas de integración básica y migración por copia en `AJP-SANDBOX` se reportaron como superadas.
-- La prueba estructural en vivo `@1.1.0 → @1.2.0` todavía debe ejecutarse en el Anki local del usuario; las pruebas locales simuladas no la sustituyen.
+## Estado de validación
 
-Los datos de `examples/` son fixtures sintéticos. No representan contenido oficial ni un inventario actual de la colección personal.
+- Prueba de humo de integración en `AJP-SANDBOX`: reportada como superada.
+- Migración por copia y actualización de campo: reportadas como superadas.
+- Prueba estructural en vivo de `@1.1.0` a `@1.2.0`: pendiente de ejecutarse en la instalación local de Anki.
 
-## Inicio rápido
-
-```powershell
-python -m pip install -r requirements.txt
-python -m unittest discover -s tests -v
-python scripts\validate_content_pack.py examples\content_pack.fisica.json
-```
-
-Las operaciones que escriben en Anki deben probarse primero en un perfil de prueba y después de revisar el plan generado. No ejecutes las pruebas en vivo en una colección que contenga información que quieras conservar.
+Los ejemplos y datos de prueba son sintéticos; no constituyen contenido de estudio oficial ni una instantánea actual de la colección personal.
