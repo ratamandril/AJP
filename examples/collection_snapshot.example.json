@@ -1,0 +1,484 @@
+{
+  "protocol": "anki-json-protocol",
+  "protocol_version": "0.1.0",
+  "snapshot_kind": "collection_inventory",
+  "exported_at": "2026-10-26T15:00:00+00:00",
+  "source": {
+    "anki_connect_url": "http://127.0.0.1:8765",
+    "anki_connect_api_version_reported": 6,
+    "anki_connect_request_version": 6,
+    "scheduling_included": false,
+    "note_content_included": true,
+    "rendered_cards_included": true,
+    "deck_configs_included": false,
+    "tag_inventory_requested": true,
+    "media_inventory_requested": false,
+    "local_collection_content_written_to_snapshot": true
+  },
+  "summary": {
+    "deck_count": 2,
+    "note_type_count": 2,
+    "note_count_in_collection": 1,
+    "card_count_in_collection": 1,
+    "note_count_exported": 1,
+    "card_count_exported": 1,
+    "notes_by_type": {
+      "Física - Magnitud": 1
+    },
+    "cards_by_type": {
+      "Física - Magnitud": 1
+    },
+    "cards_by_deck": {
+      "Física::Cinemática": 1
+    },
+    "tag_counts_in_exported_notes": {
+      "demo": 1,
+      "fisica": 1
+    },
+    "global_tag_count": 2
+  },
+  "decks": [
+    {
+      "name": "Default",
+      "anki_id": 1,
+      "path_segments": [
+        "Default"
+      ],
+      "parent_name": null,
+      "leaf_name": "Default",
+      "is_filtered": null
+    },
+    {
+      "name": "Física::Cinemática",
+      "anki_id": 1700000000000,
+      "path_segments": [
+        "Física",
+        "Cinemática"
+      ],
+      "parent_name": "Física",
+      "leaf_name": "Cinemática",
+      "is_filtered": null
+    }
+  ],
+  "note_types": [
+    {
+      "name": "Basic",
+      "anki_id": 1600000000000,
+      "kind": "standard",
+      "sort_field_index": 0,
+      "fields": [
+        {
+          "name": "Front",
+          "order": 0,
+          "font": "Arial",
+          "size": 20,
+          "sticky": false,
+          "rtl": false,
+          "description": "",
+          "plain_text": false,
+          "collapsed": false,
+          "exclude_from_search": false,
+          "anki_field_id": null,
+          "tag": null,
+          "prevent_deletion": false
+        },
+        {
+          "name": "Back",
+          "order": 1,
+          "font": "Arial",
+          "size": 20,
+          "sticky": false,
+          "rtl": false,
+          "description": "",
+          "plain_text": false,
+          "collapsed": false,
+          "exclude_from_search": false,
+          "anki_field_id": null,
+          "tag": null,
+          "prevent_deletion": false
+        }
+      ],
+      "card_templates": [
+        {
+          "name": "Card 1",
+          "order": 0,
+          "question_html": "{{Front}}",
+          "answer_html": "{{FrontSide}}<hr id=answer>{{Back}}",
+          "browser_question_html": "",
+          "browser_answer_html": "",
+          "browser_font": "",
+          "browser_font_size": 0,
+          "anki_template_id": null
+        }
+      ],
+      "css": ".card { font-family: Arial; }",
+      "requirements": [
+        [
+          0,
+          "any",
+          [
+            0
+          ]
+        ]
+      ],
+      "anki_kind_code": 0,
+      "default_deck_id": null,
+      "fields_on_templates": null,
+      "latex_pre": "",
+      "latex_post": "",
+      "modified_unix": null,
+      "raw_definition": {
+        "id": 1600000000000,
+        "name": "Basic",
+        "type": 0,
+        "sortf": 0,
+        "flds": [
+          {
+            "name": "Front",
+            "ord": 0,
+            "font": "Arial",
+            "size": 20,
+            "sticky": false,
+            "rtl": false,
+            "description": ""
+          },
+          {
+            "name": "Back",
+            "ord": 1,
+            "font": "Arial",
+            "size": 20,
+            "sticky": false,
+            "rtl": false,
+            "description": ""
+          }
+        ],
+        "tmpls": [
+          {
+            "name": "Card 1",
+            "ord": 0,
+            "qfmt": "{{Front}}",
+            "afmt": "{{FrontSide}}<hr id=answer>{{Back}}",
+            "bqfmt": "",
+            "bafmt": "",
+            "did": null
+          }
+        ],
+        "css": ".card { font-family: Arial; }",
+        "req": [
+          [
+            0,
+            "any",
+            [
+              0
+            ]
+          ]
+        ],
+        "latexPre": "",
+        "latexPost": ""
+      }
+    },
+    {
+      "name": "Física - Magnitud",
+      "anki_id": 1700000000001,
+      "kind": "standard",
+      "sort_field_index": 0,
+      "fields": [
+        {
+          "name": "Nombre",
+          "order": 0,
+          "font": "Arial",
+          "size": 20,
+          "sticky": false,
+          "rtl": false,
+          "description": "",
+          "plain_text": false,
+          "collapsed": false,
+          "exclude_from_search": false,
+          "anki_field_id": null,
+          "tag": null,
+          "prevent_deletion": false
+        },
+        {
+          "name": "Definición",
+          "order": 1,
+          "font": "Arial",
+          "size": 20,
+          "sticky": false,
+          "rtl": false,
+          "description": "",
+          "plain_text": false,
+          "collapsed": false,
+          "exclude_from_search": false,
+          "anki_field_id": null,
+          "tag": null,
+          "prevent_deletion": false
+        },
+        {
+          "name": "Símbolo",
+          "order": 2,
+          "font": "Arial",
+          "size": 20,
+          "sticky": false,
+          "rtl": false,
+          "description": "",
+          "plain_text": false,
+          "collapsed": false,
+          "exclude_from_search": false,
+          "anki_field_id": null,
+          "tag": null,
+          "prevent_deletion": false
+        },
+        {
+          "name": "Unidad SI",
+          "order": 3,
+          "font": "Arial",
+          "size": 20,
+          "sticky": false,
+          "rtl": false,
+          "description": "",
+          "plain_text": false,
+          "collapsed": false,
+          "exclude_from_search": false,
+          "anki_field_id": null,
+          "tag": null,
+          "prevent_deletion": false
+        },
+        {
+          "name": "Dimensión",
+          "order": 4,
+          "font": "Arial",
+          "size": 20,
+          "sticky": false,
+          "rtl": false,
+          "description": "",
+          "plain_text": false,
+          "collapsed": false,
+          "exclude_from_search": false,
+          "anki_field_id": null,
+          "tag": null,
+          "prevent_deletion": false
+        }
+      ],
+      "card_templates": [
+        {
+          "name": "Definición",
+          "order": 0,
+          "question_html": "¿Qué es {{Nombre}}?",
+          "answer_html": "{{Definición}}<hr>{{Símbolo}} · {{Unidad SI}} · {{Dimensión}}",
+          "browser_question_html": "",
+          "browser_answer_html": "",
+          "browser_font": "",
+          "browser_font_size": 0,
+          "anki_template_id": null
+        }
+      ],
+      "css": ".card { font-size: 20px; }",
+      "requirements": [
+        [
+          0,
+          "any",
+          [
+            0
+          ]
+        ]
+      ],
+      "anki_kind_code": 0,
+      "default_deck_id": null,
+      "fields_on_templates": {
+        "Definición": [
+          [
+            "Nombre"
+          ],
+          [
+            "Definición",
+            "Símbolo",
+            "Unidad SI",
+            "Dimensión"
+          ]
+        ]
+      },
+      "latex_pre": "",
+      "latex_post": "",
+      "modified_unix": null,
+      "raw_definition": {
+        "id": 1700000000001,
+        "name": "Física - Magnitud",
+        "type": 0,
+        "sortf": 0,
+        "flds": [
+          {
+            "name": "Nombre",
+            "ord": 0,
+            "font": "Arial",
+            "size": 20,
+            "sticky": false,
+            "rtl": false,
+            "description": ""
+          },
+          {
+            "name": "Definición",
+            "ord": 1,
+            "font": "Arial",
+            "size": 20,
+            "sticky": false,
+            "rtl": false,
+            "description": ""
+          },
+          {
+            "name": "Símbolo",
+            "ord": 2,
+            "font": "Arial",
+            "size": 20,
+            "sticky": false,
+            "rtl": false,
+            "description": ""
+          },
+          {
+            "name": "Unidad SI",
+            "ord": 3,
+            "font": "Arial",
+            "size": 20,
+            "sticky": false,
+            "rtl": false,
+            "description": ""
+          },
+          {
+            "name": "Dimensión",
+            "ord": 4,
+            "font": "Arial",
+            "size": 20,
+            "sticky": false,
+            "rtl": false,
+            "description": ""
+          }
+        ],
+        "tmpls": [
+          {
+            "name": "Definición",
+            "ord": 0,
+            "qfmt": "¿Qué es {{Nombre}}?",
+            "afmt": "{{Definición}}<hr>{{Símbolo}} · {{Unidad SI}} · {{Dimensión}}",
+            "bqfmt": "",
+            "bafmt": "",
+            "did": null
+          }
+        ],
+        "css": ".card { font-size: 20px; }",
+        "req": [
+          [
+            0,
+            "any",
+            [
+              0
+            ]
+          ]
+        ],
+        "latexPre": "",
+        "latexPost": ""
+      }
+    }
+  ],
+  "notes": [
+    {
+      "note_id": 1710000000000,
+      "note_type": "Física - Magnitud",
+      "tags": [
+        "demo",
+        "fisica"
+      ],
+      "fields": {
+        "Nombre": "Velocidad",
+        "Definición": "Variación del desplazamiento respecto del tiempo.",
+        "Símbolo": "v",
+        "Unidad SI": "m/s",
+        "Dimensión": "[L T⁻¹]"
+      },
+      "modified_unix": 1790000000,
+      "card_ids": [
+        1710000000001
+      ],
+      "note_type_anki_id": 1700000000001
+    }
+  ],
+  "cards": [
+    {
+      "card_id": 1710000000001,
+      "note_id": 1710000000000,
+      "note_type": "Física - Magnitud",
+      "deck": "Física::Cinemática",
+      "template_order": 0,
+      "field_order": 0,
+      "question_html": "¿Qué es Velocidad?",
+      "answer_html": "Variación del desplazamiento respecto del tiempo.<hr>v · m/s · [L T⁻¹]",
+      "template_name": "Definición",
+      "modified_unix": null,
+      "note_type_anki_id": 1700000000001,
+      "deck_anki_id": 1700000000000
+    }
+  ],
+  "media_references": [],
+  "snapshot_schema_version": "0.2.0",
+  "exporter": {
+    "name": "export_anki_snapshot.py",
+    "version": "0.2.0"
+  },
+  "capabilities": {
+    "modelFieldsOnTemplates": {
+      "available": true
+    },
+    "getTags": {
+      "available": true
+    }
+  },
+  "tags": [
+    "demo",
+    "fisica"
+  ],
+  "media_inventory": null,
+  "sections": {
+    "decks": {
+      "included": true,
+      "records_exported": 2,
+      "count_in_collection": 2
+    },
+    "note_types": {
+      "included": true,
+      "records_exported": 2,
+      "count_in_collection": 2
+    },
+    "notes": {
+      "included": true,
+      "records_exported": 1,
+      "count_in_collection": 1
+    },
+    "cards": {
+      "included": true,
+      "records_exported": 1,
+      "count_in_collection": 1
+    },
+    "tags": {
+      "included": true,
+      "records_exported": 2
+    },
+    "media_references": {
+      "included": true,
+      "records_exported": 0
+    },
+    "media_inventory": {
+      "included": false,
+      "records_exported": 0
+    },
+    "deck_configs": {
+      "included": false,
+      "records_exported": 0
+    }
+  },
+  "warnings": [],
+  "limitations": [
+    "Este snapshot es un inventario descriptivo; no es una copia de seguridad restaurable de la colección.",
+    "Los IDs internos de Anki son locales a la colección y no deben utilizarse como identidades portables en content packs.",
+    "Las referencias multimedia se enumeran, pero los bytes de archivos no se empaquetan en este JSON.",
+    "El historial completo de repasos no se exporta; --include-scheduling solo incluye metadatos disponibles en cardsInfo.",
+    "Las definiciones raw_definition conservan propiedades que el exportador no normaliza explícitamente; el formato interno de Anki puede cambiar."
+  ]
+}

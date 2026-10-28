@@ -1,0 +1,74 @@
+{
+  "$schema": "../schemas/structural_change_plan.schema.json",
+  "protocol": "anki-json-structural-change-plan",
+  "structural_change_plan_version": "0.1.0",
+  "plan_id": "ajp.smoke.structural.1_1_to_1_2",
+  "metadata": {
+    "title": "AJP Sandbox: cambio estructural de Smoke Basic 1.1.0 a 1.2.0",
+    "description": "Prueba sintética. Añade Difficulty, cambia las dos plantillas y el CSS creando una versión paralela. No es contenido oficial ni de estudio.",
+    "author": "Anki JSON Protocol"
+  },
+  "source": {
+    "type_id": "org.openai.anki-json-protocol.smoke.basic",
+    "version": "1.1.0",
+    "anki_model_name": "AJP-SANDBOX - Smoke Basic [AJP:org.openai.anki-json-protocol.smoke.basic@1.1.0]",
+    "expected_definition": {
+      "kind": "standard",
+      "fields": ["Front", "Back", "Context"],
+      "card_templates": [
+        {
+          "name": "Forward",
+          "question_html": "<div class=\"ajp-smoke\">{{Front}}</div>",
+          "answer_html": "{{FrontSide}}<hr id=answer><div>{{Back}}</div><small>{{Context}}</small>"
+        },
+        {
+          "name": "Reverse",
+          "question_html": "<div class=\"ajp-smoke\">{{Back}}</div>",
+          "answer_html": "{{FrontSide}}<hr id=answer><div>{{Front}}</div><small>{{Context}}</small>"
+        }
+      ],
+      "css": ".card { font-family: Arial, sans-serif; font-size: 20px; text-align: center; line-height: 1.5; }\n.ajp-smoke { padding: 1em; }\nsmall { display: block; margin-top: 1em; color: #666; }"
+    }
+  },
+  "target_note_type": {
+    "type_id": "org.openai.anki-json-protocol.smoke.basic",
+    "version": "1.2.0",
+    "anki_model_name": "AJP-SANDBOX - Smoke Basic [AJP:org.openai.anki-json-protocol.smoke.basic@1.2.0]",
+    "kind": "standard",
+    "fields": ["Front", "Back", "Context", "Difficulty"],
+    "required_fields": ["Front", "Back"],
+    "card_templates": [
+      {
+        "template_id": "org.openai.anki-json-protocol.smoke.basic.forward.v1_2",
+        "name": "Forward",
+        "question_html": "<div class=\"ajp-smoke\">{{Front}}</div>",
+        "answer_html": "{{FrontSide}}<hr id=answer><div>{{Back}}</div><small>{{Context}}</small><div class=\"ajp-difficulty\">Difficulty: {{Difficulty}}</div>"
+      },
+      {
+        "template_id": "org.openai.anki-json-protocol.smoke.basic.reverse.v1_2",
+        "name": "Reverse",
+        "question_html": "<div class=\"ajp-smoke\">{{Back}}</div>",
+        "answer_html": "{{FrontSide}}<hr id=answer><div>{{Front}}</div><small>{{Context}}</small><div class=\"ajp-difficulty\">Difficulty: {{Difficulty}}</div>"
+      }
+    ],
+    "css": ".card { font-family: Arial, sans-serif; font-size: 20px; text-align: center; line-height: 1.5; }\n.ajp-smoke { padding: 1em; }\nsmall { display: block; margin-top: 1em; color: #666; }\n.ajp-difficulty { margin-top: .75em; font-size: .8em; color: #555; }"
+  },
+  "target_deck": "AJP-SANDBOX::Structural Test",
+  "selection": {
+    "mode": "explicit_source_ids",
+    "source_ids": ["org.anki-json-protocol.migrated.cb30b55ede13a42716cf99409eaa6e8618a5defb"]
+  },
+  "field_mapping": [
+    {"target_field": "Front", "operation": "copy", "source_field": "Front"},
+    {"target_field": "Back", "operation": "copy", "source_field": "Back"},
+    {"target_field": "Context", "operation": "copy", "source_field": "Context"},
+    {"target_field": "Difficulty", "operation": "constant", "value": "SYNTHETIC TEST ONLY"}
+  ],
+  "policy": {
+    "strategy": "copy_to_new_notes",
+    "preserve_original_notes": true,
+    "copy_schedule": "reset",
+    "execution": "plan_only",
+    "allow_source_type_without_version_marker": false
+  }
+}

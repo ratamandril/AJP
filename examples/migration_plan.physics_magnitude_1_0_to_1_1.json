@@ -1,0 +1,90 @@
+{
+  "$schema": "../schemas/migration_plan.schema.json",
+  "protocol": "anki-json-migration-plan",
+  "migration_plan_version": "0.2.0",
+  "plan_id": "fisica.magnitud.1_0_to_1_1.demo",
+  "metadata": {
+    "title": "Ejemplo: ampliar el tipo Magnitud física",
+    "description": "Ejemplo didáctico solamente. No coincide necesariamente con la colección del usuario y no debe ejecutarse en ella. El plan solo copia notas seleccionadas a un tipo nuevo; no es contenido oficial ni se debe aplicar contra una colección sin adaptar y validar.",
+    "author": "Anki JSON Protocol"
+  },
+  "source": {
+    "type_id": "org.estudio.fisica.magnitud",
+    "version": "1.0.0",
+    "anki_model_name": "AJP::org.estudio.fisica.magnitud@1.0.0"
+  },
+  "target_note_type": {
+    "type_id": "org.estudio.fisica.magnitud",
+    "version": "1.1.0",
+    "anki_model_name": "AJP::org.estudio.fisica.magnitud@1.1.0",
+    "kind": "standard",
+    "fields": [
+      "Nombre",
+      "Definición",
+      "Símbolo",
+      "Unidad SI",
+      "Dimensión",
+      "Notas"
+    ],
+    "required_fields": [
+      "Nombre",
+      "Definición",
+      "Símbolo",
+      "Unidad SI"
+    ],
+    "card_templates": [
+      {
+        "template_id": "org.estudio.fisica.magnitud.definicion.v1_1",
+        "name": "Definición",
+        "question_html": "¿Qué representa la magnitud {{Nombre}}?",
+        "answer_html": "{{Definición}}<hr><p>Unidad SI: {{Unidad SI}}</p><p>Dimensión: {{Dimensión}}</p><p>{{Notas}}</p>"
+      }
+    ],
+    "css": ".card { font-family: Arial, sans-serif; font-size: 20px; line-height: 1.5; }"
+  },
+  "selection": {
+    "mode": "explicit_source_ids",
+    "source_ids": [
+      "fisica.magnitud.velocidad.demo.v1"
+    ]
+  },
+  "field_mapping": [
+    {
+      "target_field": "Nombre",
+      "operation": "copy",
+      "source_field": "Nombre"
+    },
+    {
+      "target_field": "Definición",
+      "operation": "copy",
+      "source_field": "Definición"
+    },
+    {
+      "target_field": "Símbolo",
+      "operation": "copy",
+      "source_field": "Símbolo"
+    },
+    {
+      "target_field": "Unidad SI",
+      "operation": "copy",
+      "source_field": "Unidad"
+    },
+    {
+      "target_field": "Dimensión",
+      "operation": "constant",
+      "value": ""
+    },
+    {
+      "target_field": "Notas",
+      "operation": "empty"
+    }
+  ],
+  "policy": {
+    "strategy": "copy_to_new_notes",
+    "preserve_original_notes": true,
+    "copy_schedule": "reset",
+    "execution": "plan_only",
+    "allow_source_type_without_version_marker": false
+  },
+  "target_deck": "Física::Magnitudes"
+}

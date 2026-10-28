@@ -1,0 +1,24 @@
+{
+  "$schema": "../schemas/note_update_pack.schema.json",
+  "protocol": "anki-json-note-update-pack",
+  "protocol_version": "0.1.0",
+  "pack_id": "ajp.smoke.note-update.context.v1",
+  "metadata": {
+    "title": "AJP sandbox: actualización controlada de Context",
+    "description": "Actualiza un campo de la nota sintética creada por la migración AJP live test. No es contenido de estudio.",
+    "author": "Anki JSON Protocol"
+  },
+  "updates": [
+    {
+      "source_id": "org.anki-json-protocol.migrated.cb30b55ede13a42716cf99409eaa6e8618a5defb",
+      "expected_model_name": "AJP-SANDBOX - Smoke Basic [AJP:org.openai.anki-json-protocol.smoke.basic@1.1.0]",
+      "expected_fields": {
+        "Context": "Migrated by AJP integration test; synthetic fixture only."
+      },
+      "set_fields": {
+        "Context": "Migrated by AJP integration test; controlled update test v0.6.0; synthetic fixture only."
+      },
+      "reason": "Validar actualización de un campo con precondición y repetición idempotente en perfil desechable."
+    }
+  ]
+}

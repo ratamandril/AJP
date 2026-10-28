@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/anki-json-protocol/schemas/note-update-pack.schema.json",
+  "title": "Anki JSON Protocol — Note Update Pack 0.1.0",
+  "description": "Actualizaciones explícitas y precondicionadas de campos en notas gestionadas por AJP.",
+  "type": "object",
+  "required": ["protocol", "protocol_version", "pack_id", "metadata", "updates"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "protocol": {"const": "anki-json-note-update-pack"},
+    "protocol_version": {"const": "0.1.0"},
+    "pack_id": {"type": "string", "minLength": 1, "maxLength": 200},
+    "metadata": {
+      "type": "object",
+      "required": ["title", "description"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "description": {"type": "string"},
+        "author": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "updates": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["source_id", "expected_model_name", "expected_fields", "set_fields"],
+        "properties": {
+          "source_id": {"type": "string", "minLength": 1, "maxLength": 500},
+          "expected_model_name": {"type": "string", "minLength": 1},
+          "expected_fields": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string"}},
+          "set_fields": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string"}},
+          "reason": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

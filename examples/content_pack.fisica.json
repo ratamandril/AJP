@@ -1,0 +1,212 @@
+{
+  "$schema": "../schemas/content_pack.schema.json",
+  "protocol": "anki-json-protocol",
+  "protocol_version": "0.2.0",
+  "pack_id": "fisica.cinematica.mru.demo.v2",
+  "metadata": {
+    "title": "Física: ejemplos de cinemática y MRU",
+    "language": "es",
+    "description": "Ejemplo de paquete declarativo AJP 0.2.0. No actualiza objetos existentes; las definiciones de tipos se reutilizan solo si coinciden con exactitud en las propiedades gestionadas.",
+    "author": "Ejemplo de estudio",
+    "license": "CC-BY-4.0",
+    "source": "Ejemplo didáctico; verificar el contenido físico antes de incorporarlo a una colección real."
+  },
+  "decks": [
+    {
+      "name": "Física::Cinemática::JSON Demo"
+    }
+  ],
+  "note_types": [
+    {
+      "type_id": "org.estudio.fisica.magnitud",
+      "version": "1.0.0",
+      "name": "Física - Magnitud (AJP 0.2)",
+      "mode": "ensure",
+      "kind": "standard",
+      "fields": [
+        "Nombre",
+        "Definición",
+        "Símbolo",
+        "Unidad SI",
+        "Dimensión",
+        "Relación",
+        "Ejemplo"
+      ],
+      "required_fields": [
+        "Nombre",
+        "Definición",
+        "Símbolo",
+        "Unidad SI",
+        "Dimensión",
+        "Relación",
+        "Ejemplo"
+      ],
+      "card_templates": [
+        {
+          "template_id": "org.estudio.fisica.magnitud.template.definicion-de-magnitud",
+          "name": "Definición de magnitud",
+          "question_html": "<div class='kind'>Magnitud física</div><h2>{{Nombre}}</h2><p>¿Qué representa esta magnitud?</p>",
+          "answer_html": "{{FrontSide}}<hr id=answer><p>{{Definición}}</p><p><span class='label'>Símbolo:</span> {{Símbolo}}</p><p><span class='label'>Unidad SI:</span> {{Unidad SI}}</p>"
+        },
+        {
+          "template_id": "org.estudio.fisica.magnitud.template.dimension-y-relacion",
+          "name": "Dimensión y relación",
+          "question_html": "<div class='kind'>Magnitud física</div><h2>{{Nombre}}</h2><p>¿Cuál es su dimensión y cómo se puede calcular?</p>",
+          "answer_html": "{{FrontSide}}<hr id=answer><p><span class='label'>Dimensión:</span> <code>{{Dimensión}}</code></p><p class='formula'><code>{{Relación}}</code></p><p><span class='label'>Ejemplo:</span> {{Ejemplo}}</p>"
+        }
+      ],
+      "css": ".card { font-family: Arial, sans-serif; font-size: 20px; text-align: left; color: #202124; background-color: #ffffff; padding: 1.2em; line-height: 1.5; }\n.kind { color: #5f6368; font-size: 0.72em; text-transform: uppercase; letter-spacing: .08em; }\n.label { color: #5f6368; font-weight: bold; }\n.formula { font-size: 1.15em; text-align: center; margin: 1em 0; }"
+    },
+    {
+      "type_id": "org.estudio.fisica.formula",
+      "version": "1.0.0",
+      "name": "Física - Fórmula (AJP 0.2)",
+      "mode": "ensure",
+      "kind": "standard",
+      "fields": [
+        "Nombre",
+        "Ecuación",
+        "Significado físico",
+        "Variables",
+        "Condiciones",
+        "Ejemplo resuelto"
+      ],
+      "required_fields": [
+        "Nombre",
+        "Ecuación",
+        "Significado físico",
+        "Variables",
+        "Condiciones",
+        "Ejemplo resuelto"
+      ],
+      "card_templates": [
+        {
+          "template_id": "org.estudio.fisica.formula.template.recordar-ecuacion",
+          "name": "Recordar ecuación",
+          "question_html": "<div class='kind'>Fórmula física</div><h2>{{Nombre}}</h2><p>Escribe la ecuación y explica qué describe.</p>",
+          "answer_html": "{{FrontSide}}<hr id=answer><p class='formula'><code>{{Ecuación}}</code></p><p>{{Significado físico}}</p><p><b>Variables:</b> {{Variables}}</p>"
+        },
+        {
+          "template_id": "org.estudio.fisica.formula.template.condiciones-de-aplicacion",
+          "name": "Condiciones de aplicación",
+          "question_html": "<div class='kind'>Fórmula física</div><h2>{{Nombre}}</h2><p>¿Bajo qué condiciones se aplica y cómo se usa?</p>",
+          "answer_html": "{{FrontSide}}<hr id=answer><p><b>Condiciones:</b> {{Condiciones}}</p><p><b>Ejemplo resuelto:</b> {{Ejemplo resuelto}}</p>"
+        }
+      ],
+      "css": ".card { font-family: Arial, sans-serif; font-size: 20px; text-align: left; color: #202124; background: #ffffff; padding: 1.2em; line-height: 1.5; }\n.kind { color: #5f6368; font-size: .72em; text-transform: uppercase; letter-spacing: .08em; }\n.formula { text-align: center; font-size: 1.25em; margin: 1.1em 0; }"
+    },
+    {
+      "type_id": "org.estudio.fisica.comparacion",
+      "version": "1.0.0",
+      "name": "Física - Comparación (AJP 0.2)",
+      "mode": "ensure",
+      "kind": "standard",
+      "fields": [
+        "Concepto A",
+        "Definición A",
+        "Concepto B",
+        "Definición B",
+        "Criterio de comparación",
+        "Ejemplo contrastivo"
+      ],
+      "required_fields": [
+        "Concepto A",
+        "Definición A",
+        "Concepto B",
+        "Definición B",
+        "Criterio de comparación",
+        "Ejemplo contrastivo"
+      ],
+      "card_templates": [
+        {
+          "template_id": "org.estudio.fisica.comparacion.template.diferenciar-conceptos",
+          "name": "Diferenciar conceptos",
+          "question_html": "<div class='kind'>Comparación</div><h2>{{Concepto A}} vs. {{Concepto B}}</h2><p>¿Cuál es la diferencia esencial?</p>",
+          "answer_html": "{{FrontSide}}<hr id=answer><p><b>{{Concepto A}}:</b> {{Definición A}}</p><p><b>{{Concepto B}}:</b> {{Definición B}}</p><p><b>Criterio:</b> {{Criterio de comparación}}</p><p><b>Ejemplo:</b> {{Ejemplo contrastivo}}</p>"
+        }
+      ],
+      "css": ".card { font-family: Arial, sans-serif; font-size: 20px; text-align: left; color: #202124; background: #ffffff; padding: 1.2em; line-height: 1.5; }\n.kind { color: #5f6368; font-size: .72em; text-transform: uppercase; letter-spacing: .08em; }"
+    }
+  ],
+  "notes": [
+    {
+      "source_id": "fisica.cinematica.magnitud.velocidad.v1",
+      "deck": "Física::Cinemática::JSON Demo",
+      "note_type_id": "org.estudio.fisica.magnitud",
+      "tags": [
+        "fisica",
+        "cinematica",
+        "magnitud",
+        "demo"
+      ],
+      "fields": {
+        "Nombre": "Velocidad",
+        "Definición": "Magnitud vectorial que expresa la variación del desplazamiento respecto del tiempo.",
+        "Símbolo": "v",
+        "Unidad SI": "m/s",
+        "Dimensión": "[L T⁻¹]",
+        "Relación": "v = Δx / Δt (si la velocidad es constante en el intervalo)",
+        "Ejemplo": "Si el desplazamiento es 20 m en 4 s, la velocidad media es 5 m/s."
+      }
+    },
+    {
+      "source_id": "fisica.cinematica.magnitud.aceleracion.v1",
+      "deck": "Física::Cinemática::JSON Demo",
+      "note_type_id": "org.estudio.fisica.magnitud",
+      "tags": [
+        "fisica",
+        "cinematica",
+        "magnitud",
+        "demo"
+      ],
+      "fields": {
+        "Nombre": "Aceleración",
+        "Definición": "Magnitud vectorial que expresa la variación de la velocidad respecto del tiempo.",
+        "Símbolo": "a",
+        "Unidad SI": "m/s²",
+        "Dimensión": "[L T⁻²]",
+        "Relación": "a = Δv / Δt (aceleración media)",
+        "Ejemplo": "Si la velocidad cambia de 2 m/s a 10 m/s en 4 s, la aceleración media es 2 m/s²."
+      }
+    },
+    {
+      "source_id": "fisica.cinematica.formula.mru.posicion.v1",
+      "deck": "Física::Cinemática::JSON Demo",
+      "note_type_id": "org.estudio.fisica.formula",
+      "tags": [
+        "fisica",
+        "cinematica",
+        "mru",
+        "formula",
+        "demo"
+      ],
+      "fields": {
+        "Nombre": "Ecuación de posición en el MRU",
+        "Ecuación": "x = x₀ + vt",
+        "Significado físico": "Permite calcular la posición de un móvil cuando se desplaza en línea recta con velocidad constante.",
+        "Variables": "x: posición en el instante t; x₀: posición inicial; v: velocidad constante; t: tiempo transcurrido.",
+        "Condiciones": "Movimiento rectilíneo con velocidad constante; x y x₀ se expresan en el mismo sistema de referencia.",
+        "Ejemplo resuelto": "Si x₀ = 5 m, v = 3 m/s y t = 4 s, entonces x = 5 + 3·4 = 17 m."
+      }
+    },
+    {
+      "source_id": "fisica.cinematica.comparacion.rapidez.velocidad.v1",
+      "deck": "Física::Cinemática::JSON Demo",
+      "note_type_id": "org.estudio.fisica.comparacion",
+      "tags": [
+        "fisica",
+        "cinematica",
+        "comparacion",
+        "demo"
+      ],
+      "fields": {
+        "Concepto A": "Rapidez media",
+        "Definición A": "Distancia total recorrida dividida entre el tiempo transcurrido.",
+        "Concepto B": "Velocidad media",
+        "Definición B": "Desplazamiento dividido entre el tiempo transcurrido; tiene dirección y sentido.",
+        "Criterio de comparación": "La rapidez usa distancia escalar y no indica dirección; la velocidad media usa desplazamiento vectorial.",
+        "Ejemplo contrastivo": "En una vuelta completa a una pista, la distancia recorrida es positiva, pero el desplazamiento neto es cero; por ello la rapidez media puede ser positiva y la velocidad media, cero."
+      }
+    }
+  ]
+}

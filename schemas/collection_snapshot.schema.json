@@ -1,0 +1,486 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/anki-json-protocol/collection-snapshot.schema.json",
+  "title": "Anki JSON Protocol - Collection Snapshot",
+  "description": "Inventario descriptivo exportado desde Anki mediante AnkiConnect; no es una copia restaurable.",
+  "type": "object",
+  "required": [
+    "protocol",
+    "protocol_version",
+    "snapshot_schema_version",
+    "snapshot_kind",
+    "exported_at",
+    "exporter",
+    "source",
+    "capabilities",
+    "sections",
+    "summary",
+    "decks",
+    "note_types",
+    "notes",
+    "cards",
+    "tags",
+    "media_references",
+    "media_inventory",
+    "warnings",
+    "limitations"
+  ],
+  "properties": {
+    "protocol": {
+      "const": "anki-json-protocol"
+    },
+    "protocol_version": {
+      "type": "string"
+    },
+    "snapshot_schema_version": {
+      "const": "0.2.0"
+    },
+    "snapshot_kind": {
+      "const": "collection_inventory"
+    },
+    "exported_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "exporter": {
+      "type": "object",
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "sections": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "deck_count",
+        "note_type_count",
+        "note_count_in_collection",
+        "card_count_in_collection"
+      ],
+      "additionalProperties": true
+    },
+    "decks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/deck"
+      }
+    },
+    "note_types": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/noteType"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/note"
+      }
+    },
+    "cards": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/card"
+      }
+    },
+    "tags": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "media_references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "media_inventory": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "deck": {
+      "type": "object",
+      "required": [
+        "name",
+        "anki_id",
+        "path_segments",
+        "parent_name",
+        "leaf_name",
+        "is_filtered"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "anki_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "path_segments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parent_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "leaf_name": {
+          "type": "string"
+        },
+        "is_filtered": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "field": {
+      "type": "object",
+      "required": [
+        "name",
+        "order"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "order": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "font": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "size": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "sticky": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "rtl": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "template": {
+      "type": "object",
+      "required": [
+        "name",
+        "order",
+        "question_html",
+        "answer_html"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "order": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "question_html": {
+          "type": "string"
+        },
+        "answer_html": {
+          "type": "string"
+        },
+        "browser_question_html": {
+          "type": "string"
+        },
+        "browser_answer_html": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "noteType": {
+      "type": "object",
+      "required": [
+        "name",
+        "anki_id",
+        "kind",
+        "fields",
+        "card_templates",
+        "raw_definition"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "anki_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "kind": {
+          "enum": [
+            "standard",
+            "cloze"
+          ]
+        },
+        "anki_kind_code": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "sort_field_index": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field"
+          }
+        },
+        "card_templates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/template"
+          }
+        },
+        "fields_on_templates": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "css": {
+          "type": "string"
+        },
+        "requirements": {
+          "type": "array"
+        },
+        "raw_definition": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "note": {
+      "type": "object",
+      "required": [
+        "note_id",
+        "note_type",
+        "tags",
+        "fields",
+        "card_ids"
+      ],
+      "properties": {
+        "note_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "note_type": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fields": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          }
+        },
+        "fields_detail": {
+          "type": "object"
+        },
+        "modified_unix": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "profile": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "card_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "note_type_anki_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "card": {
+      "type": "object",
+      "required": [
+        "card_id",
+        "note_id",
+        "note_type",
+        "deck",
+        "template_order",
+        "question_html",
+        "answer_html"
+      ],
+      "properties": {
+        "card_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "note_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "note_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "deck": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "template_order": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "template_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "field_order": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "question_html": {
+          "type": "string"
+        },
+        "answer_html": {
+          "type": "string"
+        },
+        "note_type_anki_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "deck_anki_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

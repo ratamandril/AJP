@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/anki-json-protocol/schemas/content-pack.schema.json",
+  "title": "Anki JSON Protocol — Content Pack 0.2.0",
+  "description": "Paquete declarativo, portátil y de solo creación para crear mazos, definiciones de tipos de nota y notas mediante AnkiConnect.",
+  "type": "object",
+  "required": ["protocol", "protocol_version", "pack_id", "metadata", "decks", "note_types", "notes"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "protocol": {"const": "anki-json-protocol"},
+    "protocol_version": {"const": "0.2.0"},
+    "pack_id": {"type": "string", "minLength": 1, "maxLength": 200, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"},
+    "metadata": {
+      "type": "object",
+      "required": ["title", "language", "description"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "language": {"type": "string", "minLength": 2},
+        "description": {"type": "string"},
+        "author": {"type": "string"},
+        "license": {"type": "string"},
+        "created_at": {"type": "string", "format": "date-time"},
+        "source": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "decks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {"name": {"type": "string", "minLength": 1}},
+        "additionalProperties": false
+      }
+    },
+    "note_types": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/noteType"}
+    },
+    "notes": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/note"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "noteType": {
+      "type": "object",
+      "required": ["type_id", "version", "name", "mode", "kind", "fields", "required_fields", "card_templates", "css"],
+      "properties": {
+        "type_id": {"type": "string", "minLength": 1, "maxLength": 200, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"},
+        "version": {"type": "string", "minLength": 1, "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$"},
+        "name": {"type": "string", "minLength": 1},
+        "mode": {"enum": ["ensure", "reuse"]},
+        "kind": {"enum": ["standard", "cloze"]},
+        "fields": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "required_fields": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "css": {"type": "string"},
+        "card_templates": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["template_id", "name", "question_html", "answer_html"],
+            "properties": {
+              "template_id": {"type": "string", "minLength": 1, "maxLength": 200, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"},
+              "name": {"type": "string", "minLength": 1},
+              "question_html": {"type": "string"},
+              "answer_html": {"type": "string"}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"kind": {"const": "cloze"}}, "required": ["kind"]},
+          "then": {"properties": {"card_templates": {"maxItems": 1}}}
+        }
+      ],
+      "additionalProperties": false
+    },
+    "note": {
+      "type": "object",
+      "required": ["source_id", "deck", "note_type_id", "tags", "fields"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1, "maxLength": 500},
+        "deck": {"type": "string", "minLength": 1},
+        "note_type_id": {"type": "string", "minLength": 1, "maxLength": 200, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"},
+        "tags": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "fields": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  }
+}

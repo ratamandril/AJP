@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Generated test reports and logs
+reports/
+*.log
+
+# Local Anki exports can contain private note content
+anki_structure.json
+anki_full_snapshot.json
+*.colpkg
+*.apkg
+
+# Local secrets/configuration
+.env
+.env.*
+!.env.example

@@ -1,0 +1,23 @@
+{
+  "validation_mode": "structure_only",
+  "selected_notes": [],
+  "plan_id": "fisica.magnitud.1_0_to_1_1.demo",
+  "source": {
+    "type_id": "org.estudio.fisica.magnitud",
+    "version": "1.0.0",
+    "anki_model_name": "AJP::org.estudio.fisica.magnitud@1.0.0"
+  },
+  "target": {
+    "type_id": "org.estudio.fisica.magnitud",
+    "version": "1.1.0",
+    "anki_model_name": "AJP::org.estudio.fisica.magnitud@1.1.0"
+  },
+  "source_ids": [
+    "fisica.magnitud.velocidad.demo.v1"
+  ],
+  "field_mapping_count": 6,
+  "execution": "PLAN_ONLY — no se conecta a Anki y no escribe ni actualiza nada",
+  "migration_strategy": "copy_to_new_notes; los originales se conservan; la programación de repaso no se transfiere",
+  "result": "valid_plan_only",
+  "target_deck": "Física::Magnitudes"
+}

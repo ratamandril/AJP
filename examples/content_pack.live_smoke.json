@@ -1,0 +1,55 @@
+{
+  "$schema": "../schemas/content_pack.schema.json",
+  "protocol": "anki-json-protocol",
+  "protocol_version": "0.2.0",
+  "pack_id": "ajp.live-smoke-test.v1",
+  "metadata": {
+    "title": "AJP live smoke test",
+    "language": "en",
+    "description": "Disposable integration test for a dedicated Anki profile named AJP-SANDBOX. Creates a namespaced deck, note type and one note; designed to be repeatable and idempotent.",
+    "author": "Anki JSON Protocol",
+    "license": "CC0-1.0",
+    "source": "Integration test fixture; not study content."
+  },
+  "decks": [
+    { "name": "AJP-SANDBOX::Smoke Test" }
+  ],
+  "note_types": [
+    {
+      "type_id": "org.openai.anki-json-protocol.smoke.basic",
+      "version": "1.0.0",
+      "name": "AJP-SANDBOX - Smoke Basic [AJP:org.openai.anki-json-protocol.smoke.basic@1.0.0]",
+      "mode": "ensure",
+      "kind": "standard",
+      "fields": ["Front", "Back"],
+      "required_fields": ["Front", "Back"],
+      "card_templates": [
+        {
+          "template_id": "org.openai.anki-json-protocol.smoke.basic.forward",
+          "name": "Forward",
+          "question_html": "<div class='ajp-smoke'>{{Front}}</div>",
+          "answer_html": "{{FrontSide}}<hr id=answer><div>{{Back}}</div>"
+        },
+        {
+          "template_id": "org.openai.anki-json-protocol.smoke.basic.reverse",
+          "name": "Reverse",
+          "question_html": "<div class='ajp-smoke'>{{Back}}</div>",
+          "answer_html": "{{FrontSide}}<hr id=answer><div>{{Front}}</div>"
+        }
+      ],
+      "css": ".card { font-family: Arial, sans-serif; font-size: 20px; text-align: center; line-height: 1.5; }\n.ajp-smoke { padding: 1em; }"
+    }
+  ],
+  "notes": [
+    {
+      "source_id": "org.openai.ajp.smoke.note.001",
+      "deck": "AJP-SANDBOX::Smoke Test",
+      "note_type_id": "org.openai.anki-json-protocol.smoke.basic",
+      "tags": ["ajp_smoke_test", "not_study_content"],
+      "fields": {
+        "Front": "AJP smoke test: what does this verify?",
+        "Back": "That AnkiConnect can create a note and Anki generates its two card templates. This is disposable test content."
+      }
+    }
+  ]
+}

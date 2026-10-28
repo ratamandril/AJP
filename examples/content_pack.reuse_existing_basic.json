@@ -1,0 +1,60 @@
+{
+  "$schema": "../schemas/content_pack.schema.json",
+  "protocol": "anki-json-protocol",
+  "protocol_version": "0.2.0",
+  "pack_id": "demo.reuse.basic.fisica.v1",
+  "metadata": {
+    "title": "Demostración: reutilizar el tipo Básico existente",
+    "language": "es",
+    "description": "Ejemplo elaborado a partir de la definición Básico presente en el inventario compartido. El generador debe reutilizarlo solo si la firma administrada sigue coincidiendo.",
+    "author": "Ejemplo AJP",
+    "source": "Construido usando la estructura exportada de la colección del usuario; puede fallar en otras colecciones o si se modifica el tipo."
+  },
+  "decks": [
+    {
+      "name": "Predeterminado"
+    }
+  ],
+  "note_types": [
+    {
+      "type_id": "org.estudio.anki.basic",
+      "version": "1.0.0",
+      "name": "Básico",
+      "mode": "reuse",
+      "kind": "standard",
+      "fields": [
+        "Anverso",
+        "Reverso"
+      ],
+      "required_fields": [
+        "Anverso",
+        "Reverso"
+      ],
+      "card_templates": [
+        {
+          "template_id": "org.estudio.anki.basic.card-1",
+          "name": "Tarjeta 1",
+          "question_html": "{{Anverso}}",
+          "answer_html": "{{FrontSide}}\n\n<hr id=answer>\n\n{{Reverso}}"
+        }
+      ],
+      "css": ".card {\n    font-family: arial;\n    font-size: 20px;\n    line-height: 1.5;\n    text-align: center;\n    color: black;\n    background-color: white;\n}\n"
+    }
+  ],
+  "notes": [
+    {
+      "source_id": "demo.fisica.mru.definicion.ajp.v1",
+      "deck": "Predeterminado",
+      "note_type_id": "org.estudio.anki.basic",
+      "tags": [
+        "demo",
+        "fisica",
+        "cinematica"
+      ],
+      "fields": {
+        "Anverso": "¿Qué caracteriza al movimiento rectilíneo uniforme (MRU)?",
+        "Reverso": "La trayectoria es recta y la velocidad permanece constante."
+      }
+    }
+  ]
+}

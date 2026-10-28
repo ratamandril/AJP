@@ -1,0 +1,77 @@
+{
+  "$schema": "../schemas/migration_plan.schema.json",
+  "protocol": "anki-json-migration-plan",
+  "migration_plan_version": "0.2.0",
+  "plan_id": "ajp.smoke.migration.1_0_to_1_1",
+  "metadata": {
+    "title": "AJP Sandbox: smoke basic 1.0.0 a 1.1.0",
+    "description": "Prueba de migración de integración. Usa únicamente la nota sintética del smoke test y crea una copia con un campo Context adicional. No es contenido de estudio.",
+    "author": "Anki JSON Protocol"
+  },
+  "source": {
+    "type_id": "org.openai.anki-json-protocol.smoke.basic",
+    "version": "1.0.0",
+    "anki_model_name": "AJP-SANDBOX - Smoke Basic [AJP:org.openai.anki-json-protocol.smoke.basic@1.0.0]"
+  },
+  "target_note_type": {
+    "type_id": "org.openai.anki-json-protocol.smoke.basic",
+    "version": "1.1.0",
+    "anki_model_name": "AJP-SANDBOX - Smoke Basic [AJP:org.openai.anki-json-protocol.smoke.basic@1.1.0]",
+    "kind": "standard",
+    "fields": [
+      "Front",
+      "Back",
+      "Context"
+    ],
+    "required_fields": [
+      "Front",
+      "Back"
+    ],
+    "card_templates": [
+      {
+        "template_id": "org.openai.anki-json-protocol.smoke.basic.forward.v1_1",
+        "name": "Forward",
+        "question_html": "<div class=\"ajp-smoke\">{{Front}}</div>",
+        "answer_html": "{{FrontSide}}<hr id=answer><div>{{Back}}</div><small>{{Context}}</small>"
+      },
+      {
+        "template_id": "org.openai.anki-json-protocol.smoke.basic.reverse.v1_1",
+        "name": "Reverse",
+        "question_html": "<div class=\"ajp-smoke\">{{Back}}</div>",
+        "answer_html": "{{FrontSide}}<hr id=answer><div>{{Front}}</div><small>{{Context}}</small>"
+      }
+    ],
+    "css": ".card { font-family: Arial, sans-serif; font-size: 20px; text-align: center; line-height: 1.5; }\n.ajp-smoke { padding: 1em; }\nsmall { display: block; margin-top: 1em; color: #666; }"
+  },
+  "target_deck": "AJP-SANDBOX::Migration Test",
+  "selection": {
+    "mode": "explicit_source_ids",
+    "source_ids": [
+      "org.openai.ajp.smoke.note.001"
+    ]
+  },
+  "field_mapping": [
+    {
+      "target_field": "Front",
+      "operation": "copy",
+      "source_field": "Front"
+    },
+    {
+      "target_field": "Back",
+      "operation": "copy",
+      "source_field": "Back"
+    },
+    {
+      "target_field": "Context",
+      "operation": "constant",
+      "value": "Migrated by AJP integration test; synthetic fixture only."
+    }
+  ],
+  "policy": {
+    "strategy": "copy_to_new_notes",
+    "preserve_original_notes": true,
+    "copy_schedule": "reset",
+    "execution": "plan_only",
+    "allow_source_type_without_version_marker": false
+  }
+}

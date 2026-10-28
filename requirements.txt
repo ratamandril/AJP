@@ -1,0 +1,2 @@
+# Opcional: solo se necesita para validar content_pack.schema.json en validate_content_pack.py
+jsonschema>=4.20,<5

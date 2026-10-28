@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/anki-json-protocol/schemas/structural-change-plan.schema.json",
+  "title": "AJP Structural Change Plan 0.1.0",
+  "description": "Declaración versionada de un cambio estructural; el origen se verifica contra el estado real de Anki y nunca se modifica en el flujo seguro.",
+  "type": "object",
+  "required": ["protocol", "structural_change_plan_version", "plan_id", "metadata", "source", "target_note_type", "target_deck", "selection", "field_mapping", "policy"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "protocol": {"const": "anki-json-structural-change-plan"},
+    "structural_change_plan_version": {"const": "0.1.0"},
+    "plan_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,199}$"},
+    "metadata": {
+      "type": "object", "required": ["title", "description"],
+      "properties": {"title": {"type": "string", "minLength": 1}, "description": {"type": "string"}, "author": {"type": "string"}},
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object", "required": ["type_id", "version", "anki_model_name", "expected_definition"],
+      "properties": {
+        "type_id": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$"},
+        "anki_model_name": {"type": "string", "minLength": 1},
+        "expected_definition": {
+          "type": "object", "required": ["kind", "fields", "card_templates", "css"],
+          "properties": {
+            "kind": {"enum": ["standard", "cloze"]},
+            "fields": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+            "card_templates": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/template"}},
+            "css": {"type": "string"}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "target_note_type": {
+      "type": "object", "required": ["type_id", "version", "anki_model_name", "kind", "fields", "required_fields", "card_templates", "css"],
+      "properties": {
+        "type_id": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$"},
+        "anki_model_name": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["standard", "cloze"]},
+        "fields": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "required_fields": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "card_templates": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/template"}},
+        "css": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "target_deck": {"type": "string", "minLength": 1},
+    "selection": {
+      "type": "object", "required": ["mode", "source_ids"],
+      "properties": {"mode": {"const": "explicit_source_ids"}, "source_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}},
+      "additionalProperties": false
+    },
+    "field_mapping": {
+      "type": "array", "minItems": 1,
+      "items": {"oneOf": [
+        {"type": "object", "required": ["target_field", "operation", "source_field"], "properties": {"target_field": {"type": "string", "minLength": 1}, "operation": {"const": "copy"}, "source_field": {"type": "string", "minLength": 1}}, "additionalProperties": false},
+        {"type": "object", "required": ["target_field", "operation", "value"], "properties": {"target_field": {"type": "string", "minLength": 1}, "operation": {"const": "constant"}, "value": {"type": "string"}}, "additionalProperties": false},
+        {"type": "object", "required": ["target_field", "operation"], "properties": {"target_field": {"type": "string", "minLength": 1}, "operation": {"const": "empty"}}, "additionalProperties": false}
+      ]}
+    },
+    "policy": {
+      "type": "object", "required": ["strategy", "preserve_original_notes", "copy_schedule", "execution"],
+      "properties": {"strategy": {"const": "copy_to_new_notes"}, "preserve_original_notes": {"const": true}, "copy_schedule": {"const": "reset"}, "execution": {"const": "plan_only"}, "allow_source_type_without_version_marker": {"type": "boolean", "const": false}},
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "template": {
+      "type": "object", "required": ["name", "question_html", "answer_html"],
+      "properties": {"template_id": {"type": "string", "minLength": 1}, "name": {"type": "string", "minLength": 1}, "question_html": {"type": "string"}, "answer_html": {"type": "string"}},
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
