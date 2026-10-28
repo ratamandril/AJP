@@ -8,9 +8,9 @@ La documentación principal está en español: [README_ES.md](README_ES.md). Con
 
 ## Estado de pruebas
 
-- Las 53 pruebas automatizadas locales pasaron al empaquetar esta versión.
+- Las 53 pruebas automatizadas locales pasaron con `python -m pytest -q` (53 passed in 1.95 s; verificación del 2026-10-28).
 - Las pruebas de integración básica y migración por copia en `AJP-SANDBOX` se reportaron como superadas.
-- La prueba estructural en vivo `@1.1.0 → @1.2.0` todavía debe ejecutarse en el Anki local del usuario; las pruebas locales simuladas no la sustituyen.
+- La prueba estructural en vivo `@1.1.0 → @1.2.0` también pasó en el Anki local del usuario el 2026-10-28: verificó el campo `Difficulty`, las plantillas, dos tarjetas destino, la preservación del origen y la idempotencia de la segunda ejecución. La prueba se realizó en el perfil desechable `AJP-SANDBOX`.
 
 Los datos de `examples/` son fixtures sintéticos. No representan contenido oficial ni un inventario actual de la colección personal.
 
